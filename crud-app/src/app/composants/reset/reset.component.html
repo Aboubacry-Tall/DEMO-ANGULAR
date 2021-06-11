@@ -1,1 +1,25 @@
-<p>reset works!</p>
+<div class="row">
+    <div class="col-sm-6 offset-3">
+        <form action="" autocomplete="off">
+            <mat-card class="my-4 m-5 p-4">
+                <mat-card-title class="text-center text-uppercase display-6">
+                    MAURILIB
+                </mat-card-title>
+                <mat-card-content>
+                    <h4 class="text-center">Retrouvez votre compte de <b class="text-uppercase mat-text-primary">maurilib</b></h4>
+                    <mat-form-field class="input-full">
+                        <mat-label>Adresse E-mail</mat-label>
+                        <input matInput placeholder="xyz@exemple.com" value="">
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button mat-raised-button color="primary" >Enoyer</button>
+                </mat-card-actions>
+                <mat-card-actions class="text-center">
+                    <a routerLink="/reset" class="text-decoration-none text-dark">Mot de passe oublié ?</a>
+                    <a routerLink="/register" class="mx-2 bg-success text-white" mat-raised-button color="accent">Créer un compte</a>
+                </mat-card-actions>
+            </mat-card>
+        </form>
+    </div>
+</div>

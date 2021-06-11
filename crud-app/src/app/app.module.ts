@@ -20,6 +20,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { BaseComponent } from './core/base/base.component';
 import { RegisterComponent } from './composants/register/register.component';
 import { ResetComponent } from './composants/reset/reset.component';
+import { MenuComponent } from './core/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ResetComponent } from './composants/reset/reset.component';
     FooterComponent,
     BaseComponent,
     RegisterComponent,
-    ResetComponent
+    ResetComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
