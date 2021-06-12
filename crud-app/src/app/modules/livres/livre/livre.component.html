@@ -1,0 +1,80 @@
+<app-menu></app-menu>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <mat-card class="my-3">
+                <mat-card-content>
+                    <div>
+                        <a routerLink="/home" class="text-dark mx-2">Accueil</a><span>/</span>
+                        <a routerLink="/livres" class="text-dark mx-2">Livres</a><span>/</span>
+                        <a routerLink="/categorie" class="text-dark mx-2">Categorie</a><span>/</span>
+                        <span>Titre du livre</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="card my-2 shadow w-75">
+                                <img src="../../../assets/img/bx1.jpg" class="card-img-top" alt="..." style="max-height: 400px;">
+                            </div>
+                            <button class="btn shadow back-primary mx-1 my-1"><i class="fa fa-download mx-2"></i>Télécharger</button>
+                            <button mat-mini-fab color="accent" class="mx-1 my-1"><i class="fa fa-heart mx-2"></i></button>
+                        </div>
+                        <div class="col-sm-8">
+                            <mat-card-title class="text-uppercase">
+                                <h3>Titre du film</h3>
+                            </mat-card-title>
+                            <mat-card-content>
+                                <p>Par : Auteur</p>
+                                <h3>Résume</h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum placeat
+                                    totam autem blanditiis, repellat illo eum tempora laudantium voluptatum? Itaque obcaecati 
+                                    incidunt aperiam? Neque perferendis recusandae nam ab, eius voluptatibus?
+                                </p>
+                                </mat-card-content>
+                        </div>
+                    </div>
+                </mat-card-content> 
+            </mat-card>
+        </div>
+        <div class="col-sm-3">
+            <mat-card class="my-1">
+                <mat-card-title class="text-uppercase">
+                    <h3>L'ebook</h3>
+                </mat-card-title>
+                <mat-card-content>
+                    <p>Prix : xxx MRU</p>
+                    <div class="shadow p-2 text-center bg-light my-2">
+                        <p>
+                            Vos êtes dans la bibliothèque de l'universite de Nouakchott AL Aasriya
+                        </p>
+                        <p>
+                            <img src="../../../assets/img/m2.png" alt="" style="width:45px; height:45px">
+                            <img src="../../../assets/img/u1.jpg" alt="" style="width:55px; height:55px">
+                        </p>
+                        <p>
+                            Choisissez les catégories pour voir les livres disponibles
+                        </p>
+                        <p>
+                            <a routerLink="/categories" mat-raised-button color="primary"><i class="fa fa-list"></i> catégories</a>
+                        </p>
+                    </div>
+                    <div>
+                        <button mat-raised-button color="primary" class="my-1 w-100 text-center">Acheter le livre</button>
+                        <button mat-raised-button color="accent" class="my-1 w-100 text-center">Ajouter à ma liste d'envie</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="my-2">
+                <mat-card-title class="text-uppercase">
+                    <h3>Details de L'ebook</h3>
+                </mat-card-title>
+                <mat-card-content>
+                    <p>Edition Eyrolles</p>
+                    <p>Date de parution : 22/00/2222</p>
+                    <p>ISBN : 44444444444</p>
+                    <P>Langue : Francais</P>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
