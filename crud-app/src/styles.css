@@ -23,3 +23,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .font-primary{
     color: #0a58ca !important;
 }
+
+.back-secondary{
+    background: #ff4081 !important
+}

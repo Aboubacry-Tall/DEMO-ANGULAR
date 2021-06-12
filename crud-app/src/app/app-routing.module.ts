@@ -4,10 +4,18 @@ import { HomeComponent } from './composants/home/home.component';
 import { LoginComponent } from './composants/login/login.component';
 import { RegisterComponent } from './composants/register/register.component';
 import { ResetComponent } from './composants/reset/reset.component';
+import { CategorieComponent } from './modules/categories/categorie/categorie.component';
+import { CategoriesComponent } from './modules/categories/categories/categories.component';
+import { LivreComponent } from './modules/livres/livre/livre.component';
+import { LivresComponent } from './modules/livres/livres/livres.component';
 
 const routes: Routes = [
   {
     path: "",
+    component: HomeComponent
+  },
+  {
+    path: "home",
     component: HomeComponent
   },
   {
@@ -21,7 +29,24 @@ const routes: Routes = [
   {
     path: "reset",
     component: ResetComponent
+  },
+  {
+    path: "livres",
+    component: LivresComponent 
+  },
+  {
+    path: "livre",
+    component: LivreComponent
+  },
+  {
+    path: "categories",
+    component: CategoriesComponent
+  },
+  {
+    path: "categorie",
+    component: CategorieComponent
   }
+
 ];
 
 @NgModule({

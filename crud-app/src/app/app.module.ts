@@ -9,7 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { HomeComponent } from './composants/home/home.component';
@@ -21,6 +21,10 @@ import { BaseComponent } from './core/base/base.component';
 import { RegisterComponent } from './composants/register/register.component';
 import { ResetComponent } from './composants/reset/reset.component';
 import { MenuComponent } from './core/menu/menu.component';
+import { LivresComponent } from './modules/livres/livres/livres.component';
+import { LivreComponent } from './modules/livres/livre/livre.component';
+import { CategoriesComponent } from './modules/categories/categories/categories.component';
+import { CategorieComponent } from './modules/categories/categorie/categorie.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { MenuComponent } from './core/menu/menu.component';
     BaseComponent,
     RegisterComponent,
     ResetComponent,
-    MenuComponent
+    MenuComponent,
+    LivresComponent,
+    LivreComponent,
+    CategoriesComponent,
+    CategorieComponent
   ],
   imports: [
     BrowserModule,
