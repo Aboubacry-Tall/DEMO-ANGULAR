@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './composants/admin/admin.component';
 import { HomeComponent } from './composants/home/home.component';
 import { LoginComponent } from './composants/login/login.component';
 import { RegisterComponent } from './composants/register/register.component';
 import { ResetComponent } from './composants/reset/reset.component';
+import { ALivresComponent } from './modules/admin/a-livres/a-livres.component';
 import { CategorieComponent } from './modules/categories/categorie/categorie.component';
 import { CategoriesComponent } from './modules/categories/categories/categories.component';
 import { LivreComponent } from './modules/livres/livre/livre.component';
@@ -17,6 +19,15 @@ const routes: Routes = [
   {
     path: "home",
     component: HomeComponent
+  },
+  {
+    path: "admin",
+    component: AdminComponent
+  },
+  
+  {
+    path: "admin-livres",
+    component: ALivresComponent
   },
   {
     path: "login",

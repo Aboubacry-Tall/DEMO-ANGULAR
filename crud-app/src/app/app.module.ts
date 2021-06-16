@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { HomeComponent } from './composants/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './composants/login/login.component';
@@ -25,6 +27,9 @@ import { LivresComponent } from './modules/livres/livres/livres.component';
 import { LivreComponent } from './modules/livres/livre/livre.component';
 import { CategoriesComponent } from './modules/categories/categories/categories.component';
 import { CategorieComponent } from './modules/categories/categorie/categorie.component';
+import { AUsersComponent } from './modules/admin/a-users/a-users.component';
+import { ALivresComponent } from './modules/admin/a-livres/a-livres.component';
+import { AdminComponent } from './composants/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,10 @@ import { CategorieComponent } from './modules/categories/categorie/categorie.com
     LivresComponent,
     LivreComponent,
     CategoriesComponent,
-    CategorieComponent
+    CategorieComponent,
+    AUsersComponent,
+    ALivresComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +57,8 @@ import { CategorieComponent } from './modules/categories/categorie/categorie.com
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
