@@ -30,6 +30,7 @@ import { CategorieComponent } from './modules/categories/categorie/categorie.com
 import { AUsersComponent } from './modules/admin/a-users/a-users.component';
 import { ALivresComponent } from './modules/admin/a-livres/a-livres.component';
 import { AdminComponent } from './composants/admin/admin.component';
+import { APayementsComponent } from './modules/admin/a-payements/a-payements.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { AdminComponent } from './composants/admin/admin.component';
     AUsersComponent,
     ALivresComponent,
     AdminComponent,
+    APayementsComponent,
   ],
   imports: [
     BrowserModule,

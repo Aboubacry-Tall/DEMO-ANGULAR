@@ -15,7 +15,7 @@
                             <div class="card my-2 shadow w-75">
                                 <img src="../../../assets/img/bx1.jpg" class="card-img-top" alt="..." style="max-height: 400px;">
                             </div>
-                            <button class="btn shadow back-primary mx-1 my-1"><i class="fa fa-download mx-2"></i>Télécharger</button>
+                            <button class="mx-1 my-1" mat-raised-button color="primary"><i class="fa fa-download mx-2"></i>Télécharger</button>
                             <button mat-mini-fab color="accent" class="mx-1 my-1"><i class="fa fa-heart mx-2"></i></button>
                         </div>
                         <div class="col-sm-8">
@@ -30,10 +30,79 @@
                                     totam autem blanditiis, repellat illo eum tempora laudantium voluptatum? Itaque obcaecati 
                                     incidunt aperiam? Neque perferendis recusandae nam ab, eius voluptatibus?
                                 </p>
-                                </mat-card-content>
+                            </mat-card-content>
                         </div>
                     </div>
                 </mat-card-content> 
+            </mat-card>
+            <mat-card class="my-3">
+                <mat-card-title class="display-6">
+                    Mettre à jour les informations du livre
+                </mat-card-title>
+                <mat-card-content>
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="input-full">
+                                    <input matInput type="text" placeholder="Titre du livre">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="input-full">
+                                    <mat-label>Catégories</mat-label>
+                                    <mat-select>
+                                        <mat-option value="Informatiques">Informatiques</mat-option>
+                                        <mat-option value="Romances">Romances</mat-option>
+                                        <mat-option value="pnl">Development Personnel</mat-option>
+                                        <mat-option value="Histoires">Histoires</mat-option>
+                                        <mat-option value="Educations">Educations</mat-option>
+                                        <mat-option value="Jeux">Jeux</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="input-full" floatLabel="always">
+                                    <mat-label>Prix</mat-label>
+                                    <input matInput type="number" min="0" class="example-right-align" placeholder="0">
+                                    <span matPrefix>$&nbsp;</span>
+                                    <span matSuffix>.00</span>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="input-full">
+                                    <input matInput type="text" placeholder="ISBN">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="input-full">
+                                    <input matInput type="text" placeholder="Auteur">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="input-full">
+                                    <input matInput type="text" placeholder="Editeur">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="couverture">Couverture</label>
+                                <input type="file" class="form-control my-2" id="couverture">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="document">Document</label>
+                                <input type="file" class="form-control my-2" id="document">
+                            </div>
+                            <div class="col-md-12">
+                                <mat-form-field class="input-full">
+                                    <mat-label>Résume</mat-label>
+                                    <textarea matInput></textarea>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-12">
+                                <button mat-raised-button color="primary">Enregistrer</button>
+                            </div>
+                          </div>
+                    </form>
+                </mat-card-content>
             </mat-card>
         </div>
         <div class="col-sm-3">
@@ -75,6 +144,10 @@
                     <P>Langue : Francais</P>
                 </mat-card-content>
             </mat-card>
+            <button mat-fab class="my-1 mx-2 back-primary"><i class="fab fa-facebook fa-2x"></i></button>
+            <button mat-fab class="my-1 mx-2 bg-info"><i class="fab fa-twitter fa-2x"></i></button>
+            <button mat-fab class="my-1 mx-2 bg-secondary"><i class="fab fa-github fa-2x"></i></button>
+            <button mat-fab class="my-1 mx-2 bg-success"><i class="fab fa-whatsapp fa-2x"></i></button>
         </div>
     </div>
 </div>
