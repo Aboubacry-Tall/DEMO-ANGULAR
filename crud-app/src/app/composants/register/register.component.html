@@ -1,33 +1,35 @@
-<div class="row">
-    <div class="col-sm-6 offset-3">
-        <form action="" autocomplete="off">
-            <mat-card class="my-4 m-5 p-4">
-                <mat-card-title class="text-center text-uppercase display-6">
-                    inscription
-                </mat-card-title>
-                <mat-card-content>
-                    <h4 class="text-center">Créer un compte dans <b class="text-uppercase font-primary">maurilib</b></h4>
-                    <mat-form-field class="input-full">
-                        <mat-label>Adresse E-mail</mat-label>
-                        <input matInput placeholder="xyz@exemple.com" value="">
-                    </mat-form-field>
-                    <mat-form-field class="input-full">
-                        <mat-label>Mot de passe</mat-label>
-                        <input matInput type="password" placeholder="******" value="">
-                    </mat-form-field>
-                    <mat-form-field class="input-full">
-                        <mat-label>Confiermation de mot de passe</mat-label>
-                        <input matInput type="password" placeholder="******" value="">
-                    </mat-form-field>
-                </mat-card-content>
-                <mat-card-actions align="end">
-                    <button mat-raised-button color="primary" >Enregistrer</button>
-                </mat-card-actions>
-                <mat-card-actions class="text-center">
-                    <a routerLink="/reset" class="text-decoration-none text-dark">Mot de passe oublié ?</a>
-                    <a routerLink="/login" class="mx-2" mat-raised-button color="accent">Se connecter</a>
-                </mat-card-actions>
-            </mat-card>
-        </form>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-3">
+            <form action="" autocomplete="off">
+                <mat-card class="my-4 m-5 p-4">
+                    <mat-card-title class="text-center text-uppercase display-6">
+                        inscription
+                    </mat-card-title>
+                    <mat-card-content>
+                        <h4 class="text-center">Créer un compte dans <b class="text-uppercase font-primary">maurilib</b></h4>
+                        <mat-form-field class="input-full">
+                            <mat-label>Adresse E-mail</mat-label>
+                            <input matInput placeholder="xyz@exemple.com" value="">
+                        </mat-form-field>
+                        <mat-form-field class="input-full">
+                            <mat-label>Mot de passe</mat-label>
+                            <input matInput type="password" placeholder="******" value="">
+                        </mat-form-field>
+                        <mat-form-field class="input-full">
+                            <mat-label>Confiermation de mot de passe</mat-label>
+                            <input matInput type="password" placeholder="******" value="">
+                        </mat-form-field>
+                    </mat-card-content>
+                    <mat-card-actions align="end">
+                        <button mat-raised-button color="primary" >Enregistrer</button>
+                    </mat-card-actions>
+                    <mat-card-actions class="text-center">
+                        <a routerLink="/reset" class="text-decoration-none text-dark">Mot de passe oublié ?</a>
+                        <a routerLink="/login" class="mx-2" mat-raised-button color="accent">Se connecter</a>
+                    </mat-card-actions>
+                </mat-card>
+            </form>
+        </div>
     </div>
 </div>

@@ -31,6 +31,8 @@ import { AUsersComponent } from './modules/admin/a-users/a-users.component';
 import { ALivresComponent } from './modules/admin/a-livres/a-livres.component';
 import { AdminComponent } from './composants/admin/admin.component';
 import { APayementsComponent } from './modules/admin/a-payements/a-payements.component';
+import { UserComponent } from './modules/users/user/user.component';
+import { UsersComponent } from './modules/users/users/users.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { APayementsComponent } from './modules/admin/a-payements/a-payements.com
     ALivresComponent,
     AdminComponent,
     APayementsComponent,
+    UserComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
