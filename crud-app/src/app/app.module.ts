@@ -35,6 +35,8 @@ import { AdminComponent } from './composants/admin/admin.component';
 import { APayementsComponent } from './modules/admin/a-payements/a-payements.component';
 import { UserComponent } from './modules/users/user/user.component';
 import { UsersComponent } from './modules/users/users/users.component';
+import { FavorisComponent } from './composants/favoris/favoris.component';
+import { SearchComponent } from './composants/search/search.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { UsersComponent } from './modules/users/users/users.component';
     APayementsComponent,
     UserComponent,
     UsersComponent,
+    FavorisComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
