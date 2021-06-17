@@ -12,6 +12,7 @@ import { CategorieComponent } from './modules/categories/categorie/categorie.com
 import { CategoriesComponent } from './modules/categories/categories/categories.component';
 import { LivreComponent } from './modules/livres/livre/livre.component';
 import { LivresComponent } from './modules/livres/livres/livres.component';
+import { UserComponent } from './modules/users/user/user.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: "livre",
     component: LivreComponent
+  },
+  {
+    path: "user",
+    component: UserComponent
   },
   {
     path: "categories",
