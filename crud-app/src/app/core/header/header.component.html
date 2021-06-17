@@ -1,11 +1,12 @@
 <div class="header">
   <mat-toolbar color="primary" class="navbar">
     <div><a routerLink="" class="text-decoration-none text-white">MAURILIB</a></div>
-    <div>
-      <a mat-raised-button class="mx-1 shadow" routerLink="/admin">Administration</a>
-      <a mat-raised-button class="mx-1 shadow" routerLink="/user">profile utilisateur</a>
-      <a mat-raised-button class="mx-1 shadow" routerLink="/login">Se connecter</a>
-      <a mat-raised-button class="mx-1 shadow" color="accent" routerLink="/logout">Deconnexion</a>
-    </div>
+    <a mat-raised-button class="mx-1 shadow" routerLink="/login">Se connecter</a>
+    <button mat-mini-fab [matMenuTriggerFor]="menu"><i class="fa fa-user-circle fa-1x"></i></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Mon Compte</button>
+      <button mat-menu-item>Administration</button>
+      <button mat-menu-item class="text-danger">Deconnexion</button>
+    </mat-menu>
   </mat-toolbar>
 </div>
