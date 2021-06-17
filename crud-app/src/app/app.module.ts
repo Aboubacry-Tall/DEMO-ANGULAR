@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { HomeComponent } from './composants/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './composants/login/login.component';
@@ -70,6 +71,7 @@ import { UsersComponent } from './modules/users/users/users.component';
     MatListModule,
     MatCardModule,
     MatInputModule,
+    MatExpansionModule,
     HttpClientModule
   ],
   providers: [],
