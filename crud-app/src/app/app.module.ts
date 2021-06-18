@@ -37,7 +37,11 @@ import { UserComponent } from './modules/users/user/user.component';
 import { UsersComponent } from './modules/users/users/users.component';
 import { FavorisComponent } from './composants/favoris/favoris.component';
 import { SearchComponent } from './composants/search/search.component';
+<<<<<<< HEAD
 import { FormsModule } from '@angular/forms';
+=======
+import { E404Component } from './composants/e404/e404.component';
+>>>>>>> origin/main
 
 @NgModule({
   declarations: [
@@ -62,6 +66,7 @@ import { FormsModule } from '@angular/forms';
     UsersComponent,
     FavorisComponent,
     SearchComponent,
+    E404Component,
   ],
   imports: [
     BrowserModule,
