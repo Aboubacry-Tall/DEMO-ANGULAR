@@ -37,6 +37,7 @@ import { UserComponent } from './modules/users/user/user.component';
 import { UsersComponent } from './modules/users/users/users.component';
 import { FavorisComponent } from './composants/favoris/favoris.component';
 import { SearchComponent } from './composants/search/search.component';
+import { E404Component } from './composants/e404/e404.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { SearchComponent } from './composants/search/search.component';
     UsersComponent,
     FavorisComponent,
     SearchComponent,
+    E404Component,
   ],
   imports: [
     BrowserModule,
