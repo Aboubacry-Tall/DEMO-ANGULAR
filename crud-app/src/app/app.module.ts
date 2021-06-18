@@ -37,6 +37,7 @@ import { UserComponent } from './modules/users/user/user.component';
 import { UsersComponent } from './modules/users/users/users.component';
 import { FavorisComponent } from './composants/favoris/favoris.component';
 import { SearchComponent } from './composants/search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { SearchComponent } from './composants/search/search.component';
     MatInputModule,
     MatExpansionModule,
     MatMenuModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],

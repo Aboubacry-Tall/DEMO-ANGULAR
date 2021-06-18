@@ -1,12 +1,12 @@
 <div class="header">
   <mat-toolbar color="primary" class="navbar">
     <div><a routerLink="" class="text-decoration-none text-white">MAURILIB</a></div>
-    <a mat-raised-button class="mx-1 shadow" routerLink="/login">Se connecter</a>
-    <button mat-mini-fab [matMenuTriggerFor]="menu"><i class="fa fa-user-circle fa-1x"></i></button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/user">Mon Compte</button>
-      <button mat-menu-item routerLink="/admin">Administration</button>
-      <button mat-menu-item routerLink="/logout" class="text-danger">Deconnexion</button>
+    <a *ngIf="UserId() ==null" mat-raised-button class="mx-1 shadow" routerLink="/login">Se connecter</a>
+    <button *ngIf="UserId() !=null" mat-mini-fab [matMenuTriggerFor]="menu"><i class="fa fa-user-circle fa-1x"></i></button>
+    <mat-menu #menu="matMenu" >
+      <button *ngIf="UserId() !='0'" mat-menu-item routerLink="/user">Mon Compte</button>
+      <button *ngIf="UserId() =='0'" mat-menu-item routerLink="/admin">Administration</button>
+      <button (click)="logout()" mat-menu-item routerLink="/logout" class="text-danger">Deconnexion</button>
     </mat-menu>
   </mat-toolbar>
 </div>

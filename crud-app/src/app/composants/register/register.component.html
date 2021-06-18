@@ -1,36 +1,52 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6 offset-3">
-            <form action="" autocomplete="off">
+            <form #createform="ngForm" (ngSubmit)= "saveUser()">
                 <mat-card class="my-4 m-5 p-4">
                     <mat-card-title class="text-center text-uppercase display-6">
                         inscription
                     </mat-card-title>
                     <mat-card-content>
                         <h4 class="text-center">Créer un compte dans <b class="text-uppercase font-primary">maurilib</b></h4>
+                        <small *ngIf="msg!='null'" class="text-danger">{{msg}}</small>
                         <mat-form-field class="input-full">
                             <mat-label>Nom et prénom</mat-label>
-                            <input matInput placeholder="John Doe" value="">
+                            <input  matInput name="nom" type="text" [(ngModel)]="user.nom" placeholder="xyz@exemple.com" required #nom="ngModel" 
+                             [class.is-invalid]="nom.invalid && nom.touched">
                         </mat-form-field>
+                        <small class="text-danger" [class.d-none]="nom.valid || nom.untouched">Veillez saisir votre nom</small>
+
                         <mat-form-field class="input-full">
                             <mat-label>Adresse E-mail</mat-label>
-                            <input matInput type="email" placeholder="xyz@exemple.com" value="">
+                            <input  matInput name="email" type="text" [(ngModel)]="user.email" placeholder="xyz@exemple.com" required #email="ngModel" 
+                            pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" [class.is-invalid]="email.invalid && email.touched">
                         </mat-form-field>
+                        <small class="text-danger" [class.d-none]="email.valid || email.untouched">Veillez saisir un email valide</small>
+
                         <mat-form-field class="input-full">
-                            <mat-label>Téléphone</mat-label>
-                            <input matInput type="tel" placeholder="John Doe" value="">
+                            <mat-label>Telephone</mat-label>
+                            <input  matInput name="telephone" type="number" [(ngModel)]="user.telephone" placeholder="Telephone" required #telephone="ngModel" 
+                             [class.is-invalid]="telephone.invalid && telephone.touched">
                         </mat-form-field>
+                        <small class="text-danger" [class.d-none]="telephone.valid || telephone.untouched">Veillez saisir votre numero de telephone</small>
+
                         <mat-form-field class="input-full">
                             <mat-label>Domicile</mat-label>
-                            <input matInput placeholder="John Doe" value="">
+                            <input  matInput name="domicile" type="text" [(ngModel)]="user.domicile" placeholder="Domicile" required #domicile="ngModel" 
+                             [class.is-invalid]="domicile.invalid && domicile.touched">
                         </mat-form-field>
+                        <small class="text-danger" [class.d-none]="domicile.valid || domicile.untouched">Veillez saisir votre domicile</small>
+                        
                         <mat-form-field class="input-full">
                             <mat-label>Mot de passe</mat-label>
-                            <input matInput type="password" placeholder="******" value="">
+                            <input matInput type="password" name="code" placeholder="******" [(ngModel)]="user.code" placeholder="********" #code="ngModel" required
+                            [class.is-invalid]="code.invalid && code.touched">
                         </mat-form-field>
+                        <small class="text-danger" [class.d-none]="code.valid || code.untouched">Veillez saisir un mot de passe</small>
                     </mat-card-content>
+                    
                     <mat-card-actions align="end">
-                        <button mat-raised-button color="primary" >Enregistrer</button>
+                        <button [disabled]="createform.form.invalid" mat-raised-button color="primary" >Enregistrer</button>
                     </mat-card-actions>
                     <mat-card-actions class="text-center">
                         <a routerLink="/reset" class="text-decoration-none text-dark">Mot de passe oublié ?</a>
