@@ -5,6 +5,7 @@ import { HomeComponent } from './composants/home/home.component';
 import { LoginComponent } from './composants/login/login.component';
 import { RegisterComponent } from './composants/register/register.component';
 import { ResetComponent } from './composants/reset/reset.component';
+import { SearchComponent } from './composants/search/search.component';
 import { ALivresComponent } from './modules/admin/a-livres/a-livres.component';
 import { APayementsComponent } from './modules/admin/a-payements/a-payements.component';
 import { AUsersComponent } from './modules/admin/a-users/a-users.component';
@@ -27,7 +28,10 @@ const routes: Routes = [
     path: "admin",
     component: AdminComponent
   },
-  
+  {
+    path: "search",
+    component: SearchComponent
+  },
   {
     path: "admin-livres",
     component: ALivresComponent
