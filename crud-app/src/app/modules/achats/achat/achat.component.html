@@ -4,24 +4,25 @@
             <p class="text-center">
                 <i class="fab fa-btc font-primary fa-10x"></i>
             </p>
-            <mat-card style="margin-top: 15vh;">
-                <mat-card-title class="display-6 text-center text-uppercase">
-                    acheter le livre
-                </mat-card-title>
-                <mat-card-content>
-                    <p class="text-center mat-body-strong py-1">
-                        Merci de confirmer votre adresse email pour proceder à l'achat !
-                    </p>
-                    <form action="">
-                        <mat-form-field class="input-full">
-                            <input matInput placeholder="E-mail" required>
-                        </mat-form-field>
-                    </form>
-                </mat-card-content>
-                <mat-card-actions align="end">
-                    <button mat-raised-button color="primary" (click)="openDialog()">Valider</button>
-                </mat-card-actions>
-            </mat-card>
+            <form #emailform="ngForm" (ngSubmit)="emailConfirmation()">
+                <mat-card style="margin-top: 15vh;">
+                    <mat-card-title class="display-6 text-center text-uppercase">
+                        acheter le livre
+                    </mat-card-title>
+                    <mat-card-content>
+                        <p class="text-center mat-body-strong py-1">
+                            Merci de confirmer votre adresse email pour proceder à l'achat !
+                        </p>
+                            <mat-form-field class="input-full">
+                                <input type="email" name="email"[(ngModel)]="user.email" matInput placeholder="Votre adresse mail" #email="ngModel" [class.isinvalid]="email.invalid && email.touched" required>
+                            </mat-form-field>
+                            <small class="text-danger" [class.d-none]="email.valid || email.untouched">Merci de saisir une adresse email valide</small>
+                    </mat-card-content>
+                    <mat-card-actions align="end">
+                        <button mat-raised-button color="primary" [disabled]="emailform.form.invalid">Valider</button>
+                    </mat-card-actions>
+                </mat-card>
+            </form>
         </div>
     </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { User } from '../../users/models/user';
 import { ContratComponent } from '../contrat/contrat.component';
 
 @Component({
@@ -9,9 +10,21 @@ import { ContratComponent } from '../contrat/contrat.component';
 })
 export class AchatComponent implements OnInit {
 
+  user: User = new User();
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
+  }
+
+  emailConfirmation(){
+      if(localStorage.getItem('userEmail')){
+        if(this.user.email == localStorage.getItem('userEmail')){
+          
+        }
+      }else{
+        //sauvegarder la page courante
+        //Redirection vers la page de connexion
+      }
   }
 
   openDialog() {
