@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './composants/home/home.component';
@@ -38,6 +39,8 @@ import { UsersComponent } from './modules/users/users/users.component';
 import { FavorisComponent } from './composants/favoris/favoris.component';
 import { SearchComponent } from './composants/search/search.component';
 import { E404Component } from './composants/e404/e404.component';
+import { ContratComponent } from './modules/achats/contrat/contrat.component';
+import { AchatComponent } from './modules/achats/achat/achat.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +66,8 @@ import { E404Component } from './composants/e404/e404.component';
     FavorisComponent,
     SearchComponent,
     E404Component,
+    ContratComponent,
+    AchatComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +84,7 @@ import { E404Component } from './composants/e404/e404.component';
     MatCardModule,
     MatInputModule,
     MatExpansionModule,
+    MatDialogModule,
     MatMenuModule,
     HttpClientModule
   ],
