@@ -18,10 +18,13 @@ export class AchatComponent implements OnInit {
 
   emailConfirmation(){
       if(localStorage.getItem('userEmail')){
-        if(this.user.email == localStorage.getItem('userEmail')){
-          
+        if(this.user.email === localStorage.getItem('userEmail')){
+          this.openDialog();
+        }else{
+
         }
       }else{
+        alert("no");
         //sauvegarder la page courante
         //Redirection vers la page de connexion
       }

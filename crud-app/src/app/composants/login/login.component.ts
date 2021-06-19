@@ -27,11 +27,12 @@ export class LoginComponent implements OnInit {
           var userStatus=this.user.statut;
           if(userStatus=="Active" && this.userId=='0'){
           localStorage.setItem('userId',this.userId);
-          localStorage.setItem('userEmail',this.userEmail);
+          
           this.goToAdmin();
         }
           if(userStatus=="Active" && this.userId!='0'){
           localStorage.setItem('userId',this.userId);
+          localStorage.setItem('userEmail',this.userEmail);
           this.goToUser();
           }
         }
