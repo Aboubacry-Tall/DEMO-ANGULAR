@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
         this.goToUser();
       },
       error =>console.log(error));
+      if(!this.userService.createUser(this.user))
       this.msg='Cette email est deja utilise ou cet compte existe deja';
     }
   
