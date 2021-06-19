@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         this.msg='Email ou mot de passe invalide';
     }
     goToUser(){
-      this.router.navigate(['']);
+      this.router.navigate(['home']);
     }
     goToAdmin(){
       this.router.navigate(['admin']);
