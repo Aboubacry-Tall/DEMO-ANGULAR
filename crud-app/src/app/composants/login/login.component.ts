@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
         }
       },
       error =>console.log(error));
-            this.msg='Email ou mot de passe invalide';
+      if(!this.userService.loginUserForm(this.user))
+        this.msg='Email ou mot de passe invalide';
     }
     goToUser(){
       this.router.navigate(['']);
