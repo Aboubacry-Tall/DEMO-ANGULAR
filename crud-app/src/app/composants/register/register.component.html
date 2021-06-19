@@ -11,7 +11,7 @@
                         <small *ngIf="msg!='null'" class="text-danger">{{msg}}</small>
                         <mat-form-field class="input-full">
                             <mat-label>Nom et prénom</mat-label>
-                            <input  matInput name="nom" type="text" [(ngModel)]="user.nom" placeholder="xyz@exemple.com" required #nom="ngModel" 
+                            <input  matInput name="nom" type="text" [(ngModel)]="user.nom" placeholder="Nom et prénom" required #nom="ngModel" 
                              [class.is-invalid]="nom.invalid && nom.touched">
                         </mat-form-field>
                         <small class="text-danger" [class.d-none]="nom.valid || nom.untouched">Veillez saisir votre nom</small>
@@ -25,7 +25,7 @@
 
                         <mat-form-field class="input-full">
                             <mat-label>Telephone</mat-label>
-                            <input  matInput name="telephone" type="number" [(ngModel)]="user.telephone" placeholder="Telephone" required #telephone="ngModel" 
+                            <input  matInput name="telephone" type="number" [(ngModel)]="user.telephone" placeholder="XX-XX-XX-XX" required #telephone="ngModel" 
                              [class.is-invalid]="telephone.invalid && telephone.touched">
                         </mat-form-field>
                         <small class="text-danger" [class.d-none]="telephone.valid || telephone.untouched">Veillez saisir votre numero de telephone</small>
