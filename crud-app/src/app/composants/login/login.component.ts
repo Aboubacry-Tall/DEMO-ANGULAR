@@ -11,6 +11,7 @@ import { UserDataService } from '../../modules/users/services/user-data.service'
 export class LoginComponent implements OnInit {
   user: User =new User();
   userId='';
+  userEmail='';
   msg='null';
     constructor(private userService: UserDataService,private router: Router) { }
   
@@ -22,11 +23,13 @@ export class LoginComponent implements OnInit {
         this.user=data;
         if(this.user){
           this.userId=this.user.id+"";
+          this.userEmail=this.user.email+"";
           var userStatus=this.user.statut;
           if(userStatus=="Active" && this.userId=='0'){
           localStorage.setItem('userId',this.userId);
+          localStorage.setItem('userEmail',this.userEmail);
           this.goToAdmin();
-          }
+        }
           if(userStatus=="Active" && this.userId!='0'){
           localStorage.setItem('userId',this.userId);
           this.goToUser();
