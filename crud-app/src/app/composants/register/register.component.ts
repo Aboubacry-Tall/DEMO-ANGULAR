@@ -11,6 +11,7 @@ import { UserDataService } from '../../modules/users/services/user-data.service'
 })
 export class RegisterComponent implements OnInit {
   user : User = new User();
+  userId='';
   msg='null';
     constructor(private userService : UserDataService, private router: Router) { }
   
@@ -20,6 +21,8 @@ export class RegisterComponent implements OnInit {
     saveUser(){
       this.userService.createUser(this.user).subscribe(data =>{
         console.log(data);
+        this.userId=this.user.id+"";
+        localStorage.setItem('userId',this.userId);
         this.goToUser();
       },
       error =>console.log(error));
@@ -28,7 +31,7 @@ export class RegisterComponent implements OnInit {
     }
   
     goToUser(){
-      this.router.navigate(['']);
+      this.router.navigate(['home']);
     }
   
 
