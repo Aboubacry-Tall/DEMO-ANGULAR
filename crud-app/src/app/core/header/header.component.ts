@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserDataService } from '../../modules/users/services/user-data.service';
+
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserDataService,private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.UserId());
+    this.UserId();
   }
+  UserId(){
+    return localStorage.getItem('userId');
+  }
+  updateUser(userId:string |null){
+    this.router.navigate(['profile',userId]);
+  }
+  logout(){
+    localStorage.removeItem('userId');
+    this.router.navigate(['/login']);
+  }
+
 
 }

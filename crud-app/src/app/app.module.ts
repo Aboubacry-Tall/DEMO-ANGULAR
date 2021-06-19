@@ -38,9 +38,16 @@ import { UserComponent } from './modules/users/user/user.component';
 import { UsersComponent } from './modules/users/users/users.component';
 import { FavorisComponent } from './composants/favoris/favoris.component';
 import { SearchComponent } from './composants/search/search.component';
+<<<<<<< HEAD
+import { FormsModule } from '@angular/forms';
+=======
 import { E404Component } from './composants/e404/e404.component';
+<<<<<<< HEAD
 import { ContratComponent } from './modules/achats/contrat/contrat.component';
 import { AchatComponent } from './modules/achats/achat/achat.component';
+=======
+>>>>>>> origin/main
+>>>>>>> origin/main
 
 @NgModule({
   declarations: [
@@ -86,6 +93,7 @@ import { AchatComponent } from './modules/achats/achat/achat.component';
     MatExpansionModule,
     MatDialogModule,
     MatMenuModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],
