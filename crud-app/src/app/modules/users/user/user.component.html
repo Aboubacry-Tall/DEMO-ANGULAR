@@ -6,14 +6,14 @@
                     Informations
                 </mat-card-title>
                 <mat-card-content>
-                    <div>
-                        <img src="" alt="Profile">
+                    <div class="px-2 font-primary">
+                        <i class="fa fa-user-circle fa-3x"></i>
                     </div>
                     <div>
-                        <p>Nom et prenom</p>
-                        <p>Email</p>
-                        <p>Telephone</p>
-                        <p>Domicile</p>
+                        <p>Nom et prenom : {{user.nom}}</p>
+                        <p>Email : {{user.email}}</p>
+                        <p>Telephone : {{user.telephone}}</p>
+                        <p>Domicile : {{user.domicile}}</p>
                     </div>
                     <mat-accordion class="my-3">
                         <mat-expansion-panel 
@@ -24,28 +24,50 @@
                                 Mettez à jour votre profile
                             </mat-panel-title>
                             </mat-expansion-panel-header>
-                            <form action="" autocomplete="off" class="px-4 px-3">
-                                <mat-form-field class="input-full">
-                                    <mat-label>Nom et prénom</mat-label>
-                                    <input matInput placeholder="John Doe" value="">
-                                </mat-form-field>
-                                <mat-form-field class="input-full">
-                                    <mat-label>Adresse E-mail</mat-label>
-                                    <input matInput type="email" placeholder="xyz@exemple.com" value="">
-                                </mat-form-field>
-                                <mat-form-field class="input-full">
-                                    <mat-label>Téléphone</mat-label>
-                                    <input matInput type="tel" placeholder="John Doe" value="">
-                                </mat-form-field>
-                                <mat-form-field class="input-full">
-                                    <mat-label>Domicile</mat-label>
-                                    <input matInput placeholder="John Doe" value="">
-                                </mat-form-field>
-                                <mat-form-field class="input-full">
-                                    <mat-label>Mot de passe</mat-label>
-                                    <input matInput type="password" placeholder="******" value="">
-                                </mat-form-field>
-                                <button mat-raised-button color="primary" >Enregistrer</button>
+                            <form #createform="ngForm" (ngSubmit)= "updateUser()">
+                                    <mat-card-content *ngIf="msg!='0'">
+                                        <mat-form-field class="input-full">
+                                            <mat-label>Nom et prénom</mat-label>
+                                            <input  matInput name="nom" type="text" [(ngModel)]="user.nom" placeholder="Nom et prénom" required #nom="ngModel" 
+                                             [class.is-invalid]="nom.invalid && nom.touched">
+                                        </mat-form-field>
+                                        <small class="text-danger" [class.d-none]="nom.valid || nom.untouched">Veillez saisir votre nom</small>
+                
+                                        <mat-form-field class="input-full">
+                                            <mat-label>Adresse E-mail</mat-label>
+                                            <input  matInput name="email" type="text" [(ngModel)]="user.email" placeholder="xyz@exemple.com" required #email="ngModel" 
+                                            pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" [class.is-invalid]="email.invalid && email.touched">
+                                        </mat-form-field>
+                                        <small class="text-danger" [class.d-none]="email.valid || email.untouched">Veillez saisir un email valide</small>
+                
+                                        <mat-form-field class="input-full">
+                                            <mat-label>Telephone</mat-label>
+                                            <input  matInput name="telephone" type="number" [(ngModel)]="user.telephone" placeholder="XX-XX-XX-XX" required #telephone="ngModel" 
+                                             [class.is-invalid]="telephone.invalid && telephone.touched">
+                                        </mat-form-field>
+                                        <small class="text-danger" [class.d-none]="telephone.valid || telephone.untouched">Veillez saisir votre numero de telephone</small>
+                
+                                        <mat-form-field class="input-full">
+                                            <mat-label>Domicile</mat-label>
+                                            <input  matInput name="domicile" type="text" [(ngModel)]="user.domicile" placeholder="Domicile" required #domicile="ngModel" 
+                                             [class.is-invalid]="domicile.invalid && domicile.touched">
+                                        </mat-form-field>
+                                        <small class="text-danger" [class.d-none]="domicile.valid || domicile.untouched">Veillez saisir votre domicile</small>
+                                        
+                                        <mat-form-field class="input-full">
+                                            <mat-label>Mot de passe</mat-label>
+                                            <input matInput type="password" name="code" [(ngModel)]="user.code" placeholder="******">
+                                        </mat-form-field>
+                                    </mat-card-content>
+                                    
+                                    <mat-form-field class="input-full" *ngIf="msg=='0'">
+                                        <mat-label>Mot de passe</mat-label>
+                                        <input matInput type="password" name="code" [(ngModel)]="user.code" placeholder="******">
+                                    </mat-form-field>
+                                    
+                                    <mat-card-actions align="end">
+                                        <button [disabled]="createform.form.invalid" mat-raised-button color="primary" >Enregistrer</button>
+                                    </mat-card-actions>
                             </form>
                         </mat-expansion-panel>
                     </mat-accordion>

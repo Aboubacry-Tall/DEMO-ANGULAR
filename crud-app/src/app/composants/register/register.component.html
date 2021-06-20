@@ -39,7 +39,7 @@
                         
                         <mat-form-field class="input-full">
                             <mat-label>Mot de passe</mat-label>
-                            <input matInput type="password" name="code" placeholder="******" [(ngModel)]="user.code" placeholder="********" #code="ngModel" required
+                            <input matInput type="password" name="code" placeholder="******" [(ngModel)]="user.code" #code="ngModel" required
                             [class.is-invalid]="code.invalid && code.touched">
                         </mat-form-field>
                         <small class="text-danger" [class.d-none]="code.valid || code.untouched">Veillez saisir un mot de passe</small>

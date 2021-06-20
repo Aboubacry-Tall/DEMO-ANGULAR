@@ -71,7 +71,7 @@ const routes: Routes = [
     component: LivreComponent
   },
   {
-    path: "user",
+    path: "user/:id",
     component: UserComponent
   },
   {

@@ -20,12 +20,10 @@ export class HeaderComponent implements OnInit {
     return localStorage.getItem('userId');
   }
   updateUser(userId:string |null){
-    this.router.navigate(['profile',userId]);
+    this.router.navigate(['user',userId]);
   }
   logout(){
     localStorage.removeItem('userId');
     this.router.navigate(['/login']);
   }
-
-
 }
