@@ -30,9 +30,11 @@ export class LivreComponent implements OnInit {
           titre: [this.livre.titre, Validators.required],
           categorie: [this.livre.categorie, [Validators.required]],
           prix: [this.livre.prix, [Validators.required]],
+          statut: [this.livre.statut, [Validators.required]],
           isbn: [this.livre.isbn, [Validators.required]],
           auteur: [this.livre.auteur, [Validators.required]],
           editeur: [this.livre.editeur, [Validators.required]],
+          dates: [this.livre.dates, [Validators.required]],
           couverture: ['', [Validators.required]],
           document: ['', [Validators.required]],
           resume: [this.livre.resume, ]
@@ -42,9 +44,6 @@ export class LivreComponent implements OnInit {
       error => {
        this.route.navigate(['erreur']); 
         console.log(error)});
-
-
-      
 
   }
 
@@ -58,6 +57,10 @@ export class LivreComponent implements OnInit {
     this.livreservice.updateLivre(this.router.snapshot.params['id'],formData).subscribe(
       data =>{this.redirectLivres();});
 
+  }
+
+  UserId(){
+    return localStorage.getItem('userId');
   }
 
   redirectLivres(){
@@ -83,6 +86,15 @@ export class LivreComponent implements OnInit {
     const file = event.target.files[0];
     this.FileDoc = file;
     console.log("document loaded ...");
+  }
+
+  onSetPrix(event: any){
+    const prix = event.target.value;
+    if(prix == '0'){
+      this.getControl['statut'].setValue('gratuit');
+    }else{
+      this.getControl['statut'].setValue('payant');
+    }
   }
 
 

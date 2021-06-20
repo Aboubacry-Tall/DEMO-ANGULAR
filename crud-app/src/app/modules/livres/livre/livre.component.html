@@ -34,8 +34,8 @@
                     </div>
                 </mat-card-content> 
             </mat-card>
-        <!--############################################################################################ -->
-            <mat-card class="my-3">
+        <!--################################*ngIf="UserId() =='0'"############################################################ -->
+            <mat-card class="my-3" >
                 <mat-card-title class="display-6">
                     Mettre à jour les informations du livre
                 </mat-card-title>
@@ -74,13 +74,18 @@
                             <div class="col-md-6">
                                 <mat-form-field class="input-full" floatLabel="always">
                                     <mat-label>Prix</mat-label>
-                                    <input matInput type="number" formControlName="prix" min="0" class="example-right-align" placeholder="0">
+                                    <input matInput type="number" formControlName="prix" (change)="onSetPrix($event)" min="0" class="example-right-align" placeholder="0">
                                     <span matPrefix>$&nbsp;</span>
                                     <span matSuffix>.00</span>
                                 </mat-form-field>
                                 <div *ngIf="getControl.prix.touched && getControl.prix.invalid" class="text-danger">
                                 <div *ngIf="getControl.prix.errors?.required">prix obligatoire.</div>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="input-full">
+                                    <input matInput type="text" formControlName="statut" placeholder="statut" readonly>
+                                </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field class="input-full">
@@ -105,6 +110,14 @@
                                 <div *ngIf="getControl.editeur.touched && getControl.editeur.invalid" class="text-danger">
                                 <div *ngIf="getControl.editeur.errors?.required">editeur obligatoire.</div>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="input-full">
+                                    <input matInput type="date" formControlName="dates" placeholder="date de parution">
+                                    <div *ngIf="getControl.dates.touched && getControl.dates.invalid" class="text-danger">
+                                <div *ngIf="getControl.editeur.errors?.required">date obligatoire.</div>
+                                </div>
+                                </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <label for="couverture">Couverture</label>
@@ -171,7 +184,7 @@
                 </mat-card-title>
                 <mat-card-content>
                     <p>Edition {{livre.editeur}}</p>
-                    <p>Date de parution : {{livre.date}}</p>
+                    <p>Date de parution : {{livre.dates}}</p>
                     <p>ISBN : {{livre.isbn}}</p>
                     <P>Langue : Francais</P>
                 </mat-card-content>

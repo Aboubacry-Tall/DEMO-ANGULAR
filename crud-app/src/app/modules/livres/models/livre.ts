@@ -10,7 +10,7 @@ export class Livre {
     auteur? : string;
     editeur? : string;
     document? : string;
-    date? : string;
+    dates? : string;
     resume? : string;
 
 }

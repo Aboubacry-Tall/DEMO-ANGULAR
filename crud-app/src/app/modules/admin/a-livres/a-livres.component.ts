@@ -23,14 +23,14 @@ export class ALivresComponent implements OnInit {
   constructor(public fb: FormBuilder,private router: Router,public livreservice: LivreService) { }
 
   ngOnInit(): void {
-    console.log(this.livreBckup);
     this.getLivres();
     this.infoForm();
   }
 
   private getLivres(){
     this.livreservice.getAllLivres().subscribe(data => {
-      this.Livres = data; });
+      this.Livres = data;
+    });
   }
 
   onSubmit(){
@@ -58,6 +58,15 @@ export class ALivresComponent implements OnInit {
     console.log("document loaded ...");
   }
 
+  onSetPrix(event: any){
+    const prix = event.target.value;
+    if(prix == '0'){
+      this.getControl['statut'].setValue('gratuit');
+    }else{
+      this.getControl['statut'].setValue('payant');
+    }
+  }
+
 
   addData() {
     const formData = new  FormData();
@@ -68,11 +77,11 @@ export class ALivresComponent implements OnInit {
     formData.append('doc',this.FileDoc);
     console.log(formData);
     this.livreservice.addLivre(formData).subscribe( data => {
-      //this.router.navigate(['#']); 
+      // 
       this.messageSucess=" livre ajouté avec succes "
     },
-    error => {this.messageErroe='livre deja existe ou données incorrectes ';
-    this.livreBckup = livre;
+    error => { this.router.navigate(['admin-livres']);
+      this.messageErroe='livre deja existe ou données incorrectes ';
   });
   }
 
@@ -82,10 +91,12 @@ export class ALivresComponent implements OnInit {
         id: null,
         titre: ['', Validators.required],
         categorie: ['', [Validators.required]],
-        prix: ['', [Validators.required]],
+        prix: [0, [Validators.required]], 
+        statut: ['gratuit', [Validators.required]],
         isbn: ['', [Validators.required]],
         auteur: ['', [Validators.required]],
         editeur: ['', [Validators.required]],
+        dates: ['', [Validators.required]],
         couverture: ['', [Validators.required]],
         document: ['', [Validators.required]],
         resume: ['', ]
