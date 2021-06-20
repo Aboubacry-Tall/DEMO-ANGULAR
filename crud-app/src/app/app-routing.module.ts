@@ -16,6 +16,7 @@ import { CategoriesComponent } from './modules/categories/categories/categories.
 import { LivreComponent } from './modules/livres/livre/livre.component';
 import { LivresComponent } from './modules/livres/livres/livres.component';
 import { UserComponent } from './modules/users/user/user.component';
+import { AdminGuard, UserGuard, VisitorGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
   },
   {
     path: "admin",
-    component: AdminComponent
+    component: AdminComponent,
+    canActivate:[AdminGuard]
   },
   {
     path: "search",
@@ -36,31 +38,38 @@ const routes: Routes = [
   },
   {
     path: "achat",
-    component: AchatComponent
+    component: AchatComponent,
+    canActivate:[UserGuard]
   },
   {
     path: "admin-livres",
-    component: ALivresComponent
+    component: ALivresComponent,
+    canActivate:[AdminGuard]
   },
   {
     path: "admin-users",
-    component: AUsersComponent
+    component: AUsersComponent,
+    canActivate:[AdminGuard]
   },
   {
     path: "admin-payements",
-    component: APayementsComponent
+    component: APayementsComponent,
+    canActivate:[AdminGuard]
   },
   {
     path: "login",
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate:[VisitorGuard]
   },
   {
     path: "register",
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate:[VisitorGuard]
   },
   {
     path: "reset",
-    component: ResetComponent
+    component: ResetComponent,
+    canActivate:[VisitorGuard]
   },
   {
     path: "livres",
@@ -72,7 +81,8 @@ const routes: Routes = [
   },
   {
     path: "user/:id",
-    component: UserComponent
+    component: UserComponent,
+    canActivate:[UserGuard]
   },
   {
     path: "categories",
