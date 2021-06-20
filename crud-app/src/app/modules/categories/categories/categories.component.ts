@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor() { }
+  categories = {
+    info : "Informatiques",
+    rom : "Romances",
+    pnl : "Développement Personnel",
+    hist : "Histoires",
+    edu : "Educations",
+    jeux : "Jeux"
+  }
+
+  constructor(private router : Router) { }
 
   ngOnInit(): void {
+  }
+
+
+  findCategorie(categorie : string){
+    console.log(categorie);
+    this.router.navigate(['categorie',categorie]);
+
   }
 
 }

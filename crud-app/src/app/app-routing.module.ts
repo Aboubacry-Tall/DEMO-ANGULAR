@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './composants/admin/admin.component';
 import { E404Component } from './composants/e404/e404.component';
+import { FavorisComponent } from './composants/favoris/favoris.component';
 import { HomeComponent } from './composants/home/home.component';
 import { LoginComponent } from './composants/login/login.component';
 import { RegisterComponent } from './composants/register/register.component';
@@ -49,37 +50,23 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: "favories",
+    component: FavorisComponent
+  },
+
+  {
     path: "register",
     component: RegisterComponent
   },
-  {
-    path: "reset",
-    component: ResetComponent
+  { path: "reset",  component: ResetComponent
   },
-  {
-    path: "livres",
-    component: LivresComponent 
-  },
-  {
-    path: "livre",
-    component: LivreComponent
-  },
-  {
-    path: "user",
-    component: UserComponent
-  },
-  {
-    path: "categories",
-    component: CategoriesComponent
-  },
-  {
-    path: "categorie",
-    component: CategorieComponent
-  },
-  {
-    path: "**",
-    component: E404Component
-  }
+  { path: "livres", component: LivresComponent },
+  { path: "livre/:id", component: LivreComponent },
+  { path: "user", component: UserComponent },
+  { path: "categories", component: CategoriesComponent },
+  { path: "categorie/:categorie", component: CategorieComponent },
+  { path: "**",  component: E404Component },
+  { path: "erreur", component: E404Component },
 
 ];
 

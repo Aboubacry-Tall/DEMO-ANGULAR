@@ -38,7 +38,7 @@ import { UserComponent } from './modules/users/user/user.component';
 import { UsersComponent } from './modules/users/users/users.component';
 import { FavorisComponent } from './composants/favoris/favoris.component';
 import { SearchComponent } from './composants/search/search.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { E404Component } from './composants/e404/e404.component';
 import { ContratComponent } from './modules/achats/contrat/contrat.component';
 import { AchatComponent } from './modules/achats/achat/achat.component';
@@ -88,7 +88,8 @@ import { AchatComponent } from './modules/achats/achat/achat.component';
     MatDialogModule,
     MatMenuModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
