@@ -13,46 +13,35 @@ export class LoginComponent implements OnInit {
   userId='';
   userEmail='';
   msg='null';
-  constructor(private userService: UserDataService,private router: Router) { }
-
-  ngOnInit(): void {
-  }
-  loginUser(){
-    this.userService.loginUserForm(this.user).subscribe(data => {
-      console.log(data);
-      this.user=data;
-      if(this.user){
-        console.log(this.user);
-        this.userId=this.user.id+"";
-        this.userEmail=this.user.email+"";
-        var userStatus=this.user.statut;
-        if(userStatus=="Active" && this.userId=='0'){
+    constructor(private userService: UserDataService,private router: Router) { }
+  
+    ngOnInit(): void {
+    }
+    loginUser(){
+      this.userService.loginUserForm(this.user).subscribe(data => {
+        console.log(data);
+        this.user=data;
+        if(this.user){
+          console.log(this.user);
+          this.userId=this.user.id+"";
+          this.userEmail=this.user.email+"";
+          var userStatus=this.user.statut;
+          if(userStatus=="Active" && this.userId=='0'){
+            localStorage.setItem('userId',this.userId);
+            localStorage.setItem('userEmail',this.userEmail);
+            this.goToAdmin();
+          }
+          if(userStatus=="Active" && this.userId!='0'){
           localStorage.setItem('userId',this.userId);
           localStorage.setItem('userEmail',this.userEmail);
-          this.goToAdmin();
-        }
-        if(userStatus=="Active" && this.userId!='0'){
-          localStorage.setItem('userId',this.userId);
           this.goToUser();
-        localStorage.setItem('userId',this.userId);
-        
-        this.goToAdmin();
-      }else{
-        this.msg='Email ou mot de passe invalide';
-      }
-        if(userStatus=="Active" && this.userId!='0'){
-        localStorage.setItem('userId',this.userId);
-        localStorage.setItem('userEmail',this.userEmail);
-        this.goToUser();
+          }
         }
-      }else{
+      },
+      error =>console.log(error));
         this.msg='Email ou mot de passe invalide';
-      }
-    },
-    error =>console.log(error));
-      
-      console.log(this.msg)  
-  }
+        console.log(this.msg)  
+    }
   
     goToUser(){
       this.router.navigate(['home']);
