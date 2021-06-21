@@ -18,29 +18,27 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
     }
     loginUser(){
-      this.userService.loginUserForm(this.user).subscribe(data => {
-        console.log(data);
-        this.user=data;
-        if(this.user){
-          console.log(this.user);
+      this.userService.loginUserForm(this.user).subscribe(response => {
+        this.user=response;
+        if(this.user.statut=='Active'){
           this.userId=this.user.id+"";
           this.userEmail=this.user.email+"";
-          var userStatus=this.user.statut;
-          if(userStatus=="Active" && this.userId=='0'){
+
+          if(this.userId=='0'){
             localStorage.setItem('userId',this.userId);
             localStorage.setItem('userEmail',this.userEmail);
             this.goToAdmin();
           }
-          if(userStatus=="Active" && this.userId!='0'){
+
+          if(this.userId!='0'){
           localStorage.setItem('userId',this.userId);
           localStorage.setItem('userEmail',this.userEmail);
           this.goToUser();
           }
         }
       },
-      error =>console.log(error));
-        this.msg='Email ou mot de passe invalide';
-        console.log(this.msg)  
+      error =>console.log(error)); 
+      this.msg='Email ou mot de passe incorrect'
     }
   
     goToUser(){
