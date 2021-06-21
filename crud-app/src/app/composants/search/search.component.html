@@ -1,7 +1,28 @@
+<app-menu></app-menu>
 <div class="container">
-    <mat-form-field class="text-center input-full">
-        <mat-label>Rechercher des livres, et des categories</mat-label>
-        <input type="search" matInput formControlName="tel" class="py-3">
-        <i class="fa fa-search" matSuffix></i>
-    </mat-form-field>
+    <div class="row">
+        <div class="container">
+            <form [formGroup]="this.livreservice.dataForm" (ngSubmit)="onSubmit()">
+                <mat-form-field class="text-center input-full">
+                    <mat-label>Rechercher des livres, et des categories</mat-label>
+                    <input type="search" matInput formControlName="search" class="py-3">
+                    <i class="fa fa-search" matSuffix></i>
+                </mat-form-field>
+                </form>
+            </div>
+        
+        <div class="col-sm-3" *ngFor="let livre of Livres">
+            <div class="card my-2 shadow w-auto">
+                <img src="assets/img/{{livre.couverture}}" class="card-img-top" alt="..." style="max-height: 400px;">
+                <div class="card-body">
+                  <button mat-mini-fab color="accent" class="my-1"><i class="fa fa-heart mx-2"></i></button>
+                  <a (click)="detailsLivre(livre.id)" class="mx-2 my-1" mat-raised-button>plus d'infos</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
+<div class="container text-center text-secondary">{{notFound}}</div>
+
+

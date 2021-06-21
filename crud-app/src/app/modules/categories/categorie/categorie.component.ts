@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Livre } from '../../livres/models/livre';
+import { LivreService } from '../../livres/services/livre.service';
 
 @Component({
   selector: 'app-categorie',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategorieComponent implements OnInit {
 
-  constructor() { }
+  categorie! : string;
+  livres! : Livre[];
+
+  constructor(private livreervice: LivreService,private route : ActivatedRoute,private router : Router) { }
 
   ngOnInit(): void {
+    this.categorie = this.route.snapshot.params['categorie'];
+    this.livreervice.getCategorieLivre(this.categorie).subscribe(data => {
+      this.livres=data;
+    },err => console.log(err));
   }
 
+  detailsLivre(id? : number){
+    this.router.navigate(['livre',id]);
+  }
 }

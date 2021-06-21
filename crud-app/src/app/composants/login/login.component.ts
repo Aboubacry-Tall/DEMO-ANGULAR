@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
           this.userEmail=this.user.email+"";
           var userStatus=this.user.statut;
           if(userStatus=="Active" && this.userId=='0'){
+<<<<<<< HEAD
             localStorage.setItem('userId',this.userId);
             localStorage.setItem('userEmail',this.userEmail);
             this.goToAdmin();
@@ -34,6 +35,16 @@ export class LoginComponent implements OnInit {
           if(userStatus=="Active" && this.userId!='0'){
             localStorage.setItem('userId',this.userId);
             this.goToUser();
+=======
+          localStorage.setItem('userId',this.userId);
+          
+          this.goToAdmin();
+        }
+          if(userStatus=="Active" && this.userId!='0'){
+          localStorage.setItem('userId',this.userId);
+          localStorage.setItem('userEmail',this.userEmail);
+          this.goToUser();
+>>>>>>> origin/main
           }
         }
       },

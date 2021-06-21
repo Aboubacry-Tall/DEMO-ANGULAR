@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './composants/admin/admin.component';
 import { E404Component } from './composants/e404/e404.component';
+import { FavorisComponent } from './composants/favoris/favoris.component';
 import { HomeComponent } from './composants/home/home.component';
 import { LoginComponent } from './composants/login/login.component';
 import { RegisterComponent } from './composants/register/register.component';
@@ -19,14 +20,8 @@ import { UserComponent } from './modules/users/user/user.component';
 import { AdminGuard, UserGuard, VisitorGuard } from './auth.guard';
 
 const routes: Routes = [
-  {
-    path: "",
-    component: HomeComponent
-  },
-  {
-    path: "home",
-    component: HomeComponent
-  },
+  { path: "", component: HomeComponent },
+  { path: "home", component: HomeComponent },
   {
     path: "admin",
     component: AdminComponent,
@@ -62,6 +57,7 @@ const routes: Routes = [
     canActivate:[VisitorGuard]
   },
   {
+<<<<<<< HEAD
     path: "register",
     component: RegisterComponent,
     canActivate:[VisitorGuard]
@@ -83,19 +79,25 @@ const routes: Routes = [
     path: "user/:id",
     component: UserComponent,
     canActivate:[UserGuard]
+=======
+    path: "favories",
+    component: FavorisComponent
+>>>>>>> origin/main
   },
+
   {
-    path: "categories",
-    component: CategoriesComponent
+    path: "register",
+    component: RegisterComponent
   },
-  {
-    path: "categorie",
-    component: CategorieComponent
+  { path: "reset",  component: ResetComponent
   },
-  {
-    path: "**",
-    component: E404Component
-  }
+  { path: "livres", component: LivresComponent },
+  { path: "livre/:id", component: LivreComponent },
+  { path: "user", component: UserComponent },
+  { path: "categories", component: CategoriesComponent },
+  { path: "categorie/:categorie", component: CategorieComponent },
+  { path: "**",  component: E404Component },
+  { path: "erreur", component: E404Component },
 
 ];
 

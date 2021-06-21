@@ -4,31 +4,23 @@
             <div class="card shadow">
                 <div class="card-body">
                     <h3 class="font-primary fs-3 text-center">Liste de livres</h3>
+                        <div *ngIf="messageSucess!='null'">
+                        <div class="alert-success alert-dismissible" role="alert">
+                            <small class="text-alert-success">{{messageSucess}}</small>
+                        </div>
+                        </div>
                     <div class="row">
-                        <div class="col-md-4">
+
+                        <div class="col-md-4" *ngFor="let livre of Livres">
                             <div class="card my-2 shadow w-auto">
-                                <img src="../../../assets/img/bx1.jpg" class="card-img-top" alt="..." style="max-height: 400px;">
+                                <img src="assets/img/{{livre.couverture}}" class="card-img-top" alt="..." style="max-height: 400px;">
                                 <div class="card-body">
-                                  <a routerLink="/livre" class="mx-2" mat-raised-button>plus d'infos</a>
+                                  <a (click)="detailsLivre(livre.id)" class="mx-2" mat-raised-button>plus d'infos</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card my-2 shadow w-auto">
-                                <img src="../../../assets/img/bx1.jpg" class="card-img-top" alt="..." style="max-height: 400px;">
-                                <div class="card-body">
-                                  <a routerLink="/livre" class="mx-2" mat-raised-button>plus d'infos</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card my-2 shadow w-auto">
-                                <img src="../../../assets/img/bx1.jpg" class="card-img-top" alt="..." style="max-height: 400px;">
-                                <div class="card-body">
-                                  <a routerLink="/livre" class="mx-2" mat-raised-button>plus d'infos</a>
-                                </div>
-                            </div>
-                        </div>
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -37,17 +29,23 @@
             <div class="card shadow">
                 <div class="card-body">
                     <h3 class="font-primary fs-3 text-center">Ajouter un livre</h3>
-                    <form action="">
+                    <form [formGroup]="this.livreservice.dataForm" (ngSubmit)="onSubmit()" novalidate>
+                            <div class="alert-danger">
+                            <small *ngIf="messageErroe!='null'" class="text-alert-danger">{{messageErroe}}</small>
+                            </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field class="input-full">
-                                    <input matInput type="text" placeholder="Titre du livre">
+                                    <input matInput type="text"  formControlName="titre" placeholder="Titre du livre">
                                 </mat-form-field>
+                                <div *ngIf="getControl.titre.touched && getControl.titre.invalid" class="text-danger">
+                                <div *ngIf="getControl.titre.errors?.required">titre obligatoire.</div>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field class="input-full">
                                     <mat-label>Catégories</mat-label>
-                                    <mat-select>
+                                    <mat-select formControlName="categorie">
                                         <mat-option value="Informatiques">Informatiques</mat-option>
                                         <mat-option value="Romances">Romances</mat-option>
                                         <mat-option value="pnl">Development Personnel</mat-option>
@@ -56,47 +54,82 @@
                                         <mat-option value="Jeux">Jeux</mat-option>
                                     </mat-select>
                                 </mat-form-field>
+                                <div *ngIf="getControl.categorie.touched && getControl.categorie.invalid" class="text-danger">
+                                <div *ngIf="getControl.categorie.errors?.required">categorie obligatoire.</div>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field class="input-full" floatLabel="always">
                                     <mat-label>Prix</mat-label>
-                                    <input matInput type="number" min="0" class="example-right-align" placeholder="0">
+                                    <input matInput type="number" min="0" formControlName="prix" (change)="onSetPrix($event)" class="example-right-align" placeholder="0">
                                     <span matPrefix>$&nbsp;</span>
                                     <span matSuffix>.00</span>
                                 </mat-form-field>
+                                <div *ngIf="getControl.prix.touched && getControl.prix.invalid" class="text-danger">
+                                <div *ngIf="getControl.prix.errors?.required">prix obligatoire.</div>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field class="input-full">
-                                    <input matInput type="text" placeholder="ISBN">
+                                    <input matInput type="text" formControlName="statut" placeholder="statut" readonly>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field class="input-full">
-                                    <input matInput type="text" placeholder="Auteur">
+                                    <input matInput type="text" formControlName="isbn" placeholder="ISBN">
                                 </mat-form-field>
+                                <div *ngIf="getControl.isbn.touched && getControl.isbn.invalid" class="text-danger">
+                                <div *ngIf="getControl.isbn.errors?.required">isbn obligatoire.</div>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field class="input-full">
-                                    <input matInput type="text" placeholder="Editeur">
+                                    <input matInput type="text" formControlName="auteur" placeholder="Auteur">
+                                </mat-form-field>
+                                <div *ngIf="getControl.auteur.touched && getControl.auteur.invalid" class="text-danger">
+                                <div *ngIf="getControl.auteur.errors?.required">auteur obligatoire.</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="input-full">
+                                    <input matInput type="text" formControlName="editeur" placeholder="Editeur">
+                                </mat-form-field>
+                                <div *ngIf="getControl.editeur.touched && getControl.editeur.invalid" class="text-danger">
+                                <div *ngIf="getControl.editeur.errors?.required">editeur obligatoire.</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="input-full">
+                                    <input matInput type="date" formControlName="dates" placeholder="date de parution">
+                                    <div *ngIf="getControl.dates.touched && getControl.dates.invalid" class="text-danger">
+                                <div *ngIf="getControl.editeur.errors?.required">date obligatoire.</div>
+                                </div>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
                                 <label for="couverture">Couverture</label>
-                                <input type="file" class="form-control my-2" id="couverture">
+                                <input type="file" formControlName="couverture" (change)="onSelectFileImg($event)" accept="image/*" class="form-control my-2" id="couverture">
+                                <div *ngIf="getControl.couverture.touched && getControl.couverture.invalid" class="text-danger">
+                                <div *ngIf="getControl.couverture.errors?.required">couverture obligatoire.</div>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="document">Document</label>
-                                <input type="file" class="form-control my-2" id="document">
+                                <input type="file" formControlName="document" (change)="onSelectFileDoc($event)" accept=".pdf,.docx" class="form-control my-2" id="document">
+                                <div *ngIf="getControl.document.touched && getControl.document.invalid" class="text-danger">
+                                <div *ngIf="getControl.document.errors?.required">document obligatoire.</div>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <mat-form-field class="input-full">
                                     <mat-label>Résume</mat-label>
-                                    <textarea matInput></textarea>
+                                    <textarea matInput formControlName="resume"></textarea>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-12">
-                                <button mat-raised-button color="primary">Enregistrer</button>
+                                <button mat-raised-button [disabled]="this.livreservice.dataForm.invalid" color="primary">Enregistrer</button>
                             </div>
+                            
                           </div>
                     </form>
                 </div>
