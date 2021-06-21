@@ -57,7 +57,6 @@ const routes: Routes = [
     canActivate:[VisitorGuard]
   },
   {
-<<<<<<< HEAD
     path: "register",
     component: RegisterComponent,
     canActivate:[VisitorGuard]
@@ -79,10 +78,10 @@ const routes: Routes = [
     path: "user/:id",
     component: UserComponent,
     canActivate:[UserGuard]
-=======
+  },
+    {
     path: "favories",
     component: FavorisComponent
->>>>>>> origin/main
   },
 
   {
