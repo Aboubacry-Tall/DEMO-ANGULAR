@@ -81,18 +81,10 @@ const routes: Routes = [
   },
     {
     path: "favories",
-    component: FavorisComponent
+    component: FavorisComponent,
+    canActivate:[UserGuard]
   },
-
-  {
-    path: "register",
-    component: RegisterComponent
-  },
-  { path: "reset",  component: ResetComponent
-  },
-  { path: "livres", component: LivresComponent },
   { path: "livre/:id", component: LivreComponent },
-  { path: "user", component: UserComponent },
   { path: "categories", component: CategoriesComponent },
   { path: "categorie/:categorie", component: CategorieComponent },
   { path: "**",  component: E404Component },
