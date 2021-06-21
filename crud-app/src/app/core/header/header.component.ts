@@ -13,7 +13,6 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserDataService,private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.UserId());
     this.UserId();
   }
   UserId(){
