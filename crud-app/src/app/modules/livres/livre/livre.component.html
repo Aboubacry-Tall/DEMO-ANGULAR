@@ -7,8 +7,8 @@
                     <div>
                         <a routerLink="/home" class="text-dark mx-2">Accueil</a><span>/</span>
                         <a routerLink="/livres" class="text-dark mx-2">Livres</a><span>/</span>
-                        <a routerLink="/categorie" class="text-dark mx-2">Categorie</a><span>/</span>
-                        <span>Titre du livre</span>
+                        <a routerLink="/categorie/{{getControl.categorie.value}}" class="text-dark mx-2">Categorie</a><span>/</span>
+                        <span>{{getControl.titre.value}}</span>
                     </div>
                     <div class="row">
                         <div class="col-sm-4">
@@ -21,31 +21,26 @@
                         </div>
                         <div class="col-sm-8">
                             <mat-card-title class="text-uppercase">
-                                <h3>{{livre.titre}}</h3>
+                                <h3> {{getControl.titre.value}}</h3>
                             </mat-card-title>
                             <mat-card-content>
-                                <p>Par : {{livre.auteur}}</p>
+                                <p>Par : {{getControl.auteur.value}}</p>
                                 <h3>Résume</h3>
                                 <p>
-                                    {{livre.resume}}
+                                    {{getControl.resume.value}}
                                 </p>
                             </mat-card-content>
                         </div>
                     </div>
                 </mat-card-content> 
             </mat-card>
-        <!--################################*ngIf="UserId() =='0'"############################################################ -->
-            <mat-card class="my-3" >
+        <!--############################################################################################ -->
+            <mat-card class="my-3" *ngIf="UserId() =='0'">
                 <mat-card-title class="display-6">
                     Mettre à jour les informations du livre
                 </mat-card-title>
                 <mat-card-content>
                     <form [formGroup]="this.livreservice.dataForm" (ngSubmit)="onSubmit()" novalidate>
-                        <div *ngIf="message!='null'">
-                        <div class="alert-danger alert-dismissible" role="alert">
-                            <small class="text-alert-danger">{{message}}</small>
-                        </div>
-                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field class="input-full">
@@ -93,6 +88,8 @@
                                 </mat-form-field>
                                 <div *ngIf="getControl.isbn.touched && getControl.isbn.invalid" class="text-danger">
                                 <div *ngIf="getControl.isbn.errors?.required">isbn obligatoire.</div>
+                                <div *ngIf="getControl.isbn.errors?.pattern">isbn doit etre numérique.</div>
+                                <div *ngIf="getControl.isbn.errors?.minlength || getControl.isbn.errors?.maxlength">minimum 10 et maximum 13 caractères.</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -154,7 +151,7 @@
                     <h3>L'ebook</h3>
                 </mat-card-title>
                 <mat-card-content>
-                    <p>Prix : {{livre.prix}} MRU</p>
+                    <p>Prix : {{getControl.prix.value}} MRU</p>
                     <div class="shadow p-2 text-center bg-light my-2">
                         <p>
                             Vos êtes dans la bibliothèque de l'universite de Nouakchott AL Aasriya
@@ -170,11 +167,11 @@
                             <a routerLink="/categories" mat-raised-button color="primary"><i class="fa fa-list"></i> catégories</a>
                         </p>
                     </div>
-                    <div>
+                    <div *ngIf="UserId()!='0'">
                         <div *ngIf="livre.statut == 'payant'">
                             <button mat-raised-button color="primary" class="my-1 w-100 text-center">Acheter le livre</button>
                         </div>
-                        <button mat-raised-button color="accent" class="my-1 w-100 text-center">Ajouter à ma liste d'envie</button>
+                        <button mat-raised-button color="accent" *ngIf="UserEmail()" class="my-1 w-100 text-center">Ajouter à ma liste d'envie</button>
                     </div>
                 </mat-card-content>
             </mat-card>
@@ -183,9 +180,9 @@
                     <h3>Details de L'ebook</h3>
                 </mat-card-title>
                 <mat-card-content>
-                    <p>Edition {{livre.editeur}}</p>
-                    <p>Date de parution : {{livre.dates}}</p>
-                    <p>ISBN : {{livre.isbn}}</p>
+                    <p>Edition {{getControl.editeur.value}}</p>
+                    <p>Date de parution : {{getControl.dates.value}}</p>
+                    <p>ISBN : {{getControl.isbn.value}}</p>
                     <P>Langue : Francais</P>
                 </mat-card-content>
             </mat-card>

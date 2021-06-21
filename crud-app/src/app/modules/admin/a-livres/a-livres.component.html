@@ -80,6 +80,8 @@
                                 </mat-form-field>
                                 <div *ngIf="getControl.isbn.touched && getControl.isbn.invalid" class="text-danger">
                                 <div *ngIf="getControl.isbn.errors?.required">isbn obligatoire.</div>
+                                <div *ngIf="getControl.isbn.errors?.pattern">isbn doit etre numérique.</div>
+                                <div *ngIf="getControl.isbn.errors?.minlength || getControl.isbn.errors?.maxlength">minimum 10 et maximum 13 caractères.</div>
                                 </div>
                             </div>
                             <div class="col-md-6">

@@ -21,29 +21,35 @@ export class LivreComponent implements OnInit {
   constructor(private fb: FormBuilder,private router : ActivatedRoute, public livreservice : LivreService,private route : Router) { }
 
   ngOnInit(): void {
-
+    console.log(this.UserEmail());
+    this.infoForm();
     this.id= this.router.snapshot.params['id'];
+    
     this.livreservice.getLivre(this.id).subscribe(
       data => {this.livre = data;
-        this.livreservice.dataForm= this.fb.group({
-          id: null,
-          titre: [this.livre.titre, Validators.required],
-          categorie: [this.livre.categorie, [Validators.required]],
-          prix: [this.livre.prix, [Validators.required]],
-          statut: [this.livre.statut, [Validators.required]],
-          isbn: [this.livre.isbn, [Validators.required]],
-          auteur: [this.livre.auteur, [Validators.required]],
-          editeur: [this.livre.editeur, [Validators.required]],
-          dates: [this.livre.dates, [Validators.required]],
-          couverture: ['', [Validators.required]],
-          document: ['', [Validators.required]],
-          resume: [this.livre.resume, ]
-          
-        });
+
+        this.livreservice.dataForm.patchValue({
+          titre : this.livre.titre,
+          categorie : this.livre.categorie,
+          prix : this.livre.prix,
+          statut : this.livre.statut,
+          isbn : this.livre.isbn,
+          auteur : this.livre.auteur,
+          editeur : this.livre.editeur,
+          dates : this.livre.dates,
+          resume : this.livre.resume,
+      });
+
+        
+        
       },
       error => {
        this.route.navigate(['erreur']); 
         console.log(error)});
+
+        this.livreservice.dataForm.patchValue({
+          titre : this.getControl.titre.value,
+      });
 
   }
 
@@ -55,12 +61,16 @@ export class LivreComponent implements OnInit {
     formData.append('img',this.FileImg);
     formData.append('doc',this.FileDoc);
     this.livreservice.updateLivre(this.router.snapshot.params['id'],formData).subscribe(
-      data =>{this.redirectLivres();});
+      data =>{window.location.reload();});
 
   }
 
   UserId(){
     return localStorage.getItem('userId');
+  }
+
+  UserEmail(){
+    return localStorage.getItem('userEmail');
   }
 
   redirectLivres(){
@@ -97,5 +107,23 @@ export class LivreComponent implements OnInit {
     }
   }
 
+  infoForm() {
+    this.livreservice.dataForm = this.fb.group({
+        id: null,
+        titre: ['', Validators.required],
+        categorie: ['', [Validators.required]],
+        prix: ['', [Validators.required]], 
+        statut: ['', [Validators.required]],
+        isbn: ['', [Validators.required,Validators.minLength(10),Validators.maxLength(13),Validators.pattern('^[0-9]*$')]],
+        auteur: ['', [Validators.required]],
+        editeur: ['', [Validators.required]],
+        dates: ['', [Validators.required]],
+        couverture: ['', [Validators.required]],
+        document: ['', [Validators.required]],
+        resume: ['', ]
+        
+      });
+
+    }
 
 }
