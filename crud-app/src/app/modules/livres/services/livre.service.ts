@@ -29,9 +29,8 @@ export class LivreService {
   }
 
   getSearchedLivre(key? : string): Observable<Livre[]>{
-    return this.httpClient.get<Livre[]>(`${this.UrlApi+"/Recherches"}/${key}`);
+    return this.httpClient.get<Livre[]>(`${this.UrlApi+"/Recherches/"}?key=${key}`);
   }
-
 
   deleteLivre(id? : number): Observable<Object>{
     return this.httpClient.delete(`${this.UrlApi}/${id}`);

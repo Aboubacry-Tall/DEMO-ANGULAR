@@ -1,4 +1,15 @@
-<div class="container">                   
+
+<div class="container">                 
+    <div class="row" ><div class="container">        
+        <div class="col-sm-6 col-md-3">
+            <a routerLink="/users" class="text-decoration-none">
+              <mat-card class="px-3 py-3 my-3 text-center text-dark text-uppercase">
+                <i class="fa fa-search mx-2 font-primary"></i> rechercher
+              </mat-card>
+            </a>
+          </div>
+    </div>
+</div>
     <div class="row" >
         <div class="col-md-3" *ngFor="let user of users ">
             <mat-card class="my-2">
@@ -8,6 +19,7 @@
                 <mat-card-content>
                     <p>Nom et prenom : {{user.nom}}</p>
                     <p>Adresse email : {{user.email}}</p>
+                    <p>Telephone : {{user.telephone}}</p>
                     <p>L'etat  : {{user.statut}}</p>
                 </mat-card-content>
                 <mat-card-actions>

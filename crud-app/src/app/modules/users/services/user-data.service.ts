@@ -37,4 +37,7 @@ export class UserDataService {
    Suspended(id?:number, user?: User):Observable<Object>{
     return this.http.put<Object>(`${this.Url+'suspendre'}/${id}`,user);
    }
+   findUser(cle:string):Observable<any>{
+     return this.http.get(`${this.Url+'findUser'}/${cle}`)
+   }
 }

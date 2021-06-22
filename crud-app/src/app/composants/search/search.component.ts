@@ -21,6 +21,7 @@ export class SearchComponent implements OnInit {
     this.livreservice.dataForm= this.fb.group({
       id: null,
       search: ['', ],});
+      
   }
 
   onSubmit(){
@@ -37,6 +38,17 @@ export class SearchComponent implements OnInit {
 
   detailsLivre(id? : number){
     this.router.navigate(['livre',id]);
+  }
+
+  onSearch(event:any){
+    this.notFound="";
+      console.log(this.livreservice.dataForm.value['search']);
+      this.livreservice.getSearchedLivre(this.livreservice.dataForm.value['search']).subscribe(data => {
+      this.Livres = data;
+    if(this.Livres.length == 0)
+    { this.notFound="recherche non trouvé !!!"}; 
+    },
+      err => {this.router.navigate(['erreur'])});
   }
 
 
