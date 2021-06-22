@@ -18,6 +18,7 @@ import { LivreComponent } from './modules/livres/livre/livre.component';
 import { LivresComponent } from './modules/livres/livres/livres.component';
 import { UserComponent } from './modules/users/user/user.component';
 import { AdminGuard, UserGuard, VisitorGuard } from './auth.guard';
+import { UsersComponent } from './modules/users/users/users.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: "admin-users",
     component: AUsersComponent,
+    canActivate:[AdminGuard]
+  },{
+    path: "users",
+    component: UsersComponent,
     canActivate:[AdminGuard]
   },
   {
