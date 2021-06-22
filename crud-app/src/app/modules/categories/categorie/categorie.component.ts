@@ -19,7 +19,7 @@ export class CategorieComponent implements OnInit {
     this.categorie = this.route.snapshot.params['categorie'];
     this.livreervice.getCategorieLivre(this.categorie).subscribe(data => {
       this.livres=data;
-    },err => console.log(err));
+    },err => this.router.navigate(['erreur']));
   }
 
   detailsLivre(id? : number){
