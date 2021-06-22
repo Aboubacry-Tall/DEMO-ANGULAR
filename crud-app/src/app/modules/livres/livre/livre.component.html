@@ -168,9 +168,12 @@
                         </p>
                     </div>
                     <div *ngIf="UserId()!='0'">
-                        <div *ngIf="livre.statut == 'payant'">
-                            <button mat-raised-button color="primary" class="my-1 w-100 text-center">Acheter le livre</button>
+                        <div *ngIf="livreStatut == 'payant' else loggedOut">
+                            <button mat-raised-button color="primary" routerLink="/achat" class="my-1 w-100 text-center">Acheter le livre</button>
                         </div>
+                        <ng-template #loggedOut>
+                            <a  href="assets/doc/{{livre.document}}" class="btn shadow back-primary w-100 "><i class="fa fa-download mx-2"></i>Télécharger</a>
+                        </ng-template>
                         <button mat-raised-button color="accent" *ngIf="UserEmail()" class="my-1 w-100 text-center">Ajouter à ma liste d'envie</button>
                     </div>
                 </mat-card-content>
