@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { User } from '../../modules/users/models/user';
 import { UserDataService } from '../../modules/users/services/user-data.service';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -21,18 +20,14 @@ export class RegisterComponent implements OnInit {
     saveUser(){
       this.userService.createUser(this.user).subscribe(data =>{
         console.log(data);
-        this.userId=this.user.id+"";
-        localStorage.setItem('userId',this.userId);
-        this.goToUser();
+        this.goToLogin();
       },
       error =>console.log(error));
       if(!this.userService.createUser(this.user))
       this.msg='Cette email est deja utilise ou cet compte existe deja';
     }
   
-    goToUser(){
-      this.router.navigate(['home']);
+    goToLogin(){
+      this.router.navigate(['login']);
     }
-  
-
 }
