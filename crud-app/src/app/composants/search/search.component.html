@@ -4,8 +4,8 @@
         <div class="container">
             <form [formGroup]="this.livreservice.dataForm" (ngSubmit)="onSubmit()">
                 <mat-form-field class="text-center input-full">
-                    <mat-label>Rechercher des livres, et des categories</mat-label>
-                    <input type="search" matInput formControlName="search" class="py-3">
+                    <mat-label>Rechercher des livres, par titre ou categories</mat-label>
+                    <input type="search" matInput formControlName="search" (keypress)="onSearch($event)" class="py-3">
                     <i class="fa fa-search" matSuffix></i>
                 </mat-form-field>
                 </form>

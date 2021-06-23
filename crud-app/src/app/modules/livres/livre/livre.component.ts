@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IBuy } from '../../achats/models/ibuy';
+import { AchatsService } from '../../achats/services/achats.service';
 import { Livre } from '../models/livre';
 import { LivreService } from '../services/livre.service';
 
@@ -12,19 +14,22 @@ import { LivreService } from '../services/livre.service';
 })
 export class LivreComponent implements OnInit {
 
+  buys!:IBuy[];
+  livreStatut = "payant";
   id? : number;
   livre: Livre = new Livre();
   message = "null";
   FileImg= new File([""],"");
   FileDoc=new File([""],"");
 
-  constructor(private fb: FormBuilder,private router : ActivatedRoute, public livreservice : LivreService,private route : Router) { }
+  constructor(private fb: FormBuilder,private router : ActivatedRoute, public livreservice : LivreService,private route : Router, public achatsservice: AchatsService) { }
 
   ngOnInit(): void {
+    this.getBuys();
     console.log(this.UserEmail());
     this.infoForm();
     this.id= this.router.snapshot.params['id'];
-    
+    sessionStorage.setItem('livreId', this.id + '');
     this.livreservice.getLivre(this.id).subscribe(
       data => {this.livre = data;
 
@@ -124,6 +129,24 @@ export class LivreComponent implements OnInit {
         
       });
 
-    }
+  }
+
+  getBuys(){
+    this.achatsservice.getBuys()
+      .subscribe(data => {
+        console.log(data)
+        this.buys=data;
+        this.buyDataConstroller();
+      });   
+  }
+
+  buyDataConstroller(){
+    for (let buy of this.buys) {
+      if (buy.livreId == sessionStorage.getItem('livreId') && buy.userId == localStorage.getItem('userId')) {
+          sessionStorage.setItem("buy", "ok");
+          this.livreStatut = "gratuit";
+      }
+    }  
+  }
 
 }

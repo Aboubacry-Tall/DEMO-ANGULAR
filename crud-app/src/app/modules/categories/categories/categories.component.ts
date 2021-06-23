@@ -24,9 +24,7 @@ export class CategoriesComponent implements OnInit {
 
 
   findCategorie(categorie : string){
-    console.log(categorie);
     this.router.navigate(['categorie',categorie]);
-
   }
 
 }
