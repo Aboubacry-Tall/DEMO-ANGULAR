@@ -18,29 +18,37 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
     }
     loginUser(){
-      this.userService.loginUserForm(this.user).subscribe(response => {
-        this.user=response;
-        if(this.user.statut=='Active'){
-          this.userId=this.user.id+"";
-          this.userEmail=this.user.email+"";
+      this.userService.loginUser(this.user).subscribe(data=>{
+        console.log(data);
+        if(data==true){
+          this.userService.loginUserForm(this.user).subscribe(response => {
+            this.user=response;
+            if(this.user.statut=='Active'){
+              this.userId=this.user.id+"";
+              this.userEmail=this.user.email+"";
 
-          if(this.userId=='0'){
-            localStorage.setItem('userId',this.userId);
-            localStorage.setItem('userEmail',this.userEmail);
-            this.goToAdmin();
-          }
+              if(this.userId=='0'){
+                localStorage.setItem('userId',this.userId);
+                localStorage.setItem('userEmail',this.userEmail);
+                this.goToAdmin();
+              }
 
-          if(this.userId!='0'){
-          localStorage.setItem('userId',this.userId);
-          localStorage.setItem('userEmail',this.userEmail);
-          this.goToUser();
-          }
+              if(this.userId!='0'){
+              localStorage.setItem('userId',this.userId);
+              localStorage.setItem('userEmail',this.userEmail);
+              this.goToUser();
+              }
+            }else{
+              this.msg='Vous etes suspendu'
+            }
+          },
+          error =>console.log(error)); 
+        }else{
+          this.msg='Email ou mot de passe incorrect'
         }
-      },
-      error =>console.log(error)); 
-      this.msg='Email ou mot de passe incorrect'
-    }
-  
+      })
+ }
+      
     goToUser(){
       this.router.navigate(['home']);
     }

@@ -20,6 +20,9 @@ export class UserDataService {
       return this.http.post(this.Url+'user',user);
   }
   loginUserForm(user: User):Observable<any>{
+    return this.http.post(this.Url+'connexion',user);
+  }
+  loginUser(user: User):Observable<any>{
     return this.http.post(this.Url+'login',user);
   }
    loggedin(){
