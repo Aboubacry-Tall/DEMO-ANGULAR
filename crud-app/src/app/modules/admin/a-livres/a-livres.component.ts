@@ -81,6 +81,7 @@ export class ALivresComponent implements OnInit {
     this.livreservice.addLivre(formData).subscribe( data => {
       // 
       this.messageSucess=" livre ajouté avec succes "
+      window.location.reload();
     },
     error => {
       this.router.navigate(['admin-livres']);
