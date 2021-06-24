@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
               this.goToUser();
               }
             }else{
-              this.msg='Vous etes suspendu'
+              this.msg='Votre compte est desactive'
             }
           },
           error =>console.log(error)); 
