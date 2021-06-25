@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { User } from '../../users/models/user';
 import { ContratComponent } from '../contrat/contrat.component';
 
@@ -11,7 +12,7 @@ import { ContratComponent } from '../contrat/contrat.component';
 export class AchatComponent implements OnInit {
 
   user: User = new User();
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private route : Router) {}
 
   ngOnInit(): void {
   }
@@ -21,12 +22,11 @@ export class AchatComponent implements OnInit {
         if(this.user.email === localStorage.getItem('userEmail')){
           this.openDialog();
         }else{
-
+          alert("Veuillez saisir votre adresse e-mail valide");
         }
       }else{
-        alert("no");
         //sauvegarder la page courante
-        //Redirection vers la page de connexion
+        this.route.navigate(['login']); 
       }
   }
 

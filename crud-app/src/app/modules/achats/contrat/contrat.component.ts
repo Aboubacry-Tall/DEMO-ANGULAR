@@ -3,7 +3,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { User } from '../../users/models/user';
 import { IBuy } from '../models/ibuy';
-import { Person } from '../models/person';
 import { AchatsService } from '../services/achats.service';
 
 @Component({

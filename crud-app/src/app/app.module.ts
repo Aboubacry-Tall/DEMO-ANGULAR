@@ -64,7 +64,6 @@ import { AchatComponent } from './modules/achats/achat/achat.component';
     APayementsComponent,
     UserComponent,
     UsersComponent,
-    FavorisComponent,
     SearchComponent,
     E404Component,
     ContratComponent,
