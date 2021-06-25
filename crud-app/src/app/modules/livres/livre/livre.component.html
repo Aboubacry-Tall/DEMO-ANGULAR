@@ -174,7 +174,8 @@
                         <ng-template #loggedOut>
                             <a  href="assets/doc/{{livre.document}}" class="btn shadow back-primary w-100 "><i class="fa fa-download mx-2"></i>Télécharger</a>
                         </ng-template>
-                        <button mat-raised-button color="accent" *ngIf="UserEmail()" class="my-1 w-100 text-center">Ajouter à ma liste d'envie</button>
+                        <button mat-raised-button *ngIf="UserEmail() && favoriser == false" (click)="favorise()" class="my-1 w-100 text-center">Ajouter à ma liste d'envie</button>
+                        <button mat-raised-button *ngIf="UserEmail() && favoriser == true" (click)="defavorise()" color="accent" class="my-1 w-100 text-center">Retirer de ma liste d'envie</button>
                     </div>
                 </mat-card-content>
             </mat-card>

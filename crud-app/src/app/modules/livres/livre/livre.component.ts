@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Favoris } from '../../achats/models/favoris';
 import { IBuy } from '../../achats/models/ibuy';
 import { AchatsService } from '../../achats/services/achats.service';
 import { Livre } from '../models/livre';
@@ -18,6 +19,9 @@ export class LivreComponent implements OnInit {
   livreStatut = "payant";
   id? : number;
   livre: Livre = new Livre();
+  favori: Favoris = new Favoris();
+  favorisList!: Favoris[];
+  favoriser = false;
   message = "null";
   FileImg= new File([""],"");
   FileDoc=new File([""],"");
@@ -26,6 +30,7 @@ export class LivreComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBuys();
+    this.getFavoris();
     console.log(this.UserEmail());
     this.infoForm();
     this.id= this.router.snapshot.params['id'];
@@ -131,7 +136,7 @@ export class LivreComponent implements OnInit {
 
   }
 
-  getBuys(){
+  public getBuys(){
     this.achatsservice.getBuys()
       .subscribe(data => {
         console.log(data)
@@ -140,13 +145,54 @@ export class LivreComponent implements OnInit {
       });   
   }
 
-  buyDataConstroller(){
+  public buyDataConstroller(){
     for (let buy of this.buys) {
       if (buy.livreId == sessionStorage.getItem('livreId') && buy.userId == localStorage.getItem('userId')) {
           sessionStorage.setItem("buy", "ok");
           this.livreStatut = "gratuit";
       }
     }  
+  }
+
+  public favorise(){
+    this.favori.livreId = sessionStorage.getItem('livreId') + '';
+    this.favori.userId = localStorage.getItem('userId') + '';
+    this.livreservice.favoris(this.favori)
+      .subscribe(data => {
+        console.log(data)
+      });  
+      window.location.reload();
+  }
+
+  public getFavoris(){
+    this.livreservice.getFavoris()
+      .subscribe(data => {
+        console.log(data)
+        this.favorisList=data;
+        this.favorisDataController();
+      });   
+  }
+
+  public favorisDataController(){
+    for (let favori of this.favorisList) {
+      if (favori.livreId == sessionStorage.getItem('livreId') && favori.userId == localStorage.getItem('userId')) {
+          this.favoriser = true;
+          sessionStorage.setItem('favorisId', favori.id + '');
+      }
+    }  
+    this.route.navigate(['livre',this.id]);
+  }
+
+  public defavorise(){
+    this.favori.livreId = sessionStorage.getItem('livreId') + '';
+    this.favori.userId = localStorage.getItem('userId') + '';
+    this.favori.id = Number(sessionStorage.getItem('favorisId'));
+    this.livreservice.defavoris(this.favori.id)
+      .subscribe(data => {
+        console.log(data)
+      });  
+      this.favoriser = true;
+      window.location.reload();
   }
 
 }

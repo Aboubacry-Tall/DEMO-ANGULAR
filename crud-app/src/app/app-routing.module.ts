@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './composants/admin/admin.component';
 import { E404Component } from './composants/e404/e404.component';
-import { FavorisComponent } from './composants/favoris/favoris.component';
 import { HomeComponent } from './composants/home/home.component';
 import { LoginComponent } from './composants/login/login.component';
 import { RegisterComponent } from './composants/register/register.component';
@@ -82,11 +81,6 @@ const routes: Routes = [
   {
     path: "user/:id",
     component: UserComponent,
-    canActivate:[UserGuard]
-  },
-    {
-    path: "favories",
-    component: FavorisComponent,
     canActivate:[UserGuard]
   },
   { path: "livre/:id", component: LivreComponent },
