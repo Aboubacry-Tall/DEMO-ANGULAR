@@ -36,7 +36,6 @@ import { AdminComponent } from './composants/admin/admin.component';
 import { APayementsComponent } from './modules/admin/a-payements/a-payements.component';
 import { UserComponent } from './modules/users/user/user.component';
 import { UsersComponent } from './modules/users/users/users.component';
-import { FavorisComponent } from './composants/favoris/favoris.component';
 import { SearchComponent } from './composants/search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { E404Component } from './composants/e404/e404.component';
