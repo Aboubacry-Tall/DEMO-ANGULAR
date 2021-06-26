@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <form #chercher="ngForm" (ngSubmit)="Rechercher()">
-            <mat-form-field class="input-full">
+            <mat-form-field class="input-full text-center">
                 <mat-label>Rchercher un utilisateur</mat-label>
                 <input  matInput name="nom" type="search" class="py-3" [(ngModel)]="nom" (keypress)="onSearch($event)" required  >
                 <i class="fa fa-search" matSuffix></i>
