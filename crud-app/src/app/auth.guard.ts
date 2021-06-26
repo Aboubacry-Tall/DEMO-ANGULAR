@@ -8,7 +8,7 @@ import { UserDataService } from './modules/users/services/user-data.service';
 export class AdminGuard implements CanActivate {
   constructor(private userService: UserDataService,private router: Router){}
   canActivate(): boolean{
-    if(this.userService.loggedin()!='null' && this.userService.loggedin()=='0'){
+    if(this.userService.loggedin()!=null && this.userService.loggedin()=='0'){
       return true;
     }else{
     this.router.navigate(['/login']);
@@ -23,7 +23,7 @@ export class AdminGuard implements CanActivate {
 export class UserGuard implements CanActivate {
   constructor(private userService: UserDataService,private router: Router){}
   canActivate(): boolean{
-    if(this.userService.loggedin()!='null'){
+    if(this.userService.loggedin()!=null){
       return true;
     }else{
     this.router.navigate(['home']);
